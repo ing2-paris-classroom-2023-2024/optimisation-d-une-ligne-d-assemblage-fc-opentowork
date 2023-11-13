@@ -1,6 +1,11 @@
-#include <stdio.h>
+#include "header.h"
 
 int main() {
-    printf("Hello, World!\n");
+
+    printf("Projet d'algo");
+
+    printf("\n");
+    system("pause");
+
     return 0;
 }
