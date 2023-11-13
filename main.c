@@ -2,7 +2,7 @@
 
 int main() {
 
-    printf("Projet d'algo");
+    printf("Projet d'algo d'allegro");
 
     printf("\n");
     system("pause");
