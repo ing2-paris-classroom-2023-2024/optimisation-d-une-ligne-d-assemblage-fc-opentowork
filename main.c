@@ -2,7 +2,7 @@
 
 int main() {
 
-    printf("Projet d'algo :: Si vous voyez ce message, c'est que la branche main a bien ete merge sur votre brancher perso !");
+    printf("salam la team \n");
 
     printf("\n");
     system("pause");
