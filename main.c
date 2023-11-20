@@ -2,7 +2,7 @@
 
 int main() {
 
-    printf("salam la team \n");
+    printf("salam la team, comment allez-vous ? \n");
 
     printf("\n");
     system("pause");
