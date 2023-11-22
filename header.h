@@ -47,11 +47,18 @@ typedef struct graphe {
 
 } t_graphe;
 
+typedef struct station {
+    int *operations; // Tableau d'opérations (sommets)
+    int taille;      // Nombre d'opérations dans la station
+} t_station;
+
 
 
 /// === PROTOTYPES ===
 
 // Sous-programmes généraux
 t_graphe * lire_fichier(char * type_lecture);
+t_station *creer_stations_compatibles(t_graphe *graphe, int *nb_stations);
+void afficher_stations(t_station *stations, int nb_stations);
 
 #endif //OPTIMISATION_D_UNE_LIGNE_D_ASSEMBLAGE_FC_OPENTOWORK_HEADER_H
