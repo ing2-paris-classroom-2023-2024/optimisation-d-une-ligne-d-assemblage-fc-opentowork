@@ -1,13 +1,20 @@
 #include "header.h"
 
 int main() {
-    ListeExclusions* liste = LireExclusions("../contrainte_exclusion.txt");
-    printf("bvn chez yanis  \n");
-    AfficherExclusions(liste);
+
+    printf("Projet d'algo :: Branche main ! \n");
+
+    /// Tests de guicha (vous pouvez décommenter si vous voulez tester)
+    /*t_graphe * liste_exclusions;
+
+    liste_exclusions = lire_fichier("exclusions");
+
+    for (int i=0; i<liste_exclusions->taille; i++) {
+
+        printf("Paire %d: %d %d \n", i, liste_exclusions->tab_aretes[i].sommet1, liste_exclusions->tab_aretes[i].sommet2);
+    }*/
 
     printf("\n");
-    free(liste->exclusions);
-    free(liste);
     system("pause");
 
     return 0;

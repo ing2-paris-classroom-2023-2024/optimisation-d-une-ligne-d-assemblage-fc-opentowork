@@ -3,4 +3,4 @@ project(optimisation_d_une_ligne_d_assemblage_fc_opentowork C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(optimisation_d_une_ligne_d_assemblage_fc_opentowork main.c header.h lire_exclusion.c afficher_exclusion.c)
+add_executable(optimisation_d_une_ligne_d_assemblage_fc_opentowork main.c header.h General/lire_fichier.c)
