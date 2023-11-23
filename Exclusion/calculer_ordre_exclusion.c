@@ -1,7 +1,7 @@
 //
 // Created by Yanis Denizot on 23/11/2023.
 //
-#include "header.h"
+#include "../header.h"
 
 
 int * calculer_ordre_exclusion(t_graphe *graphe) {  // renvoie un tab qu'on utilise pour créer une station

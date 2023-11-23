@@ -3,4 +3,4 @@ project(optimisation_d_une_ligne_d_assemblage_fc_opentowork C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(optimisation_d_une_ligne_d_assemblage_fc_opentowork main.c header.h General/lire_fichier.c creation_station.c est_dans_le_tableau_exclusion.c calculer_ordre_exclusion.c ajouter_operation_station_exclusion.c est_compatible_avec_station_exclusion.c afficher_station_exclusion.c)
+add_executable(optimisation_d_une_ligne_d_assemblage_fc_opentowork main.c header.h General/lire_fichier.c Exclusion/creation_station.c Exclusion/est_dans_le_tableau_exclusion.c Exclusion/calculer_ordre_exclusion.c Exclusion/ajouter_operation_station_exclusion.c Exclusion/est_compatible_avec_station_exclusion.c Exclusion/afficher_station_exclusion.c)

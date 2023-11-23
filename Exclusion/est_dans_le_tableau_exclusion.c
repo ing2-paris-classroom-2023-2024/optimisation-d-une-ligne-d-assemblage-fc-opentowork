@@ -1,7 +1,7 @@
 //
 // Created by Yanis Denizot on 23/11/2023.
 //
-#include "header.h"
+#include "../header.h"
 // Vérifie si un élément est déjà dans le tableau
 int est_dans_le_tableau_exclusion(int *tableau, int taille, int element) {
     for (int i = 0; i < taille; i++) {
