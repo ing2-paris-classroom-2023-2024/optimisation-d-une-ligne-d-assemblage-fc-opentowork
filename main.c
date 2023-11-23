@@ -11,11 +11,11 @@ int main() {
 
 
     // Création des stations compatibles
-    int nb_stations;
-    t_station *stations = creer_stations_compatibles(liste_exclusions, &nb_stations);
+    int nb_stations_exclusion;
+    t_station *stations = creer_stations_compatibles_exclusion(liste_exclusions, &nb_stations_exclusion);
 
     // Affichage des stations
-    afficher_stations(stations, nb_stations);
+    afficher_stations_exclusion(stations, nb_stations_exclusion);
 
 
 

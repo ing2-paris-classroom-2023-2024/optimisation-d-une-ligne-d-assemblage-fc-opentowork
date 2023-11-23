@@ -58,7 +58,11 @@ typedef struct station {
 
 // Sous-programmes généraux
 t_graphe * lire_fichier(char * type_lecture);
-t_station *creer_stations_compatibles(t_graphe *graphe, int *nb_stations);
-void afficher_stations(t_station *stations, int nb_stations);
+int est_dans_le_tableau_exclusion(int *tableau, int taille, int element);
+int * calculer_ordre_exclusion(t_graphe *graphe);
+void ajouter_operation_station_exclusion(t_station *station, int operation);
+int est_compatible_avec_station_exclusion(t_graphe *graphe, t_station *station, int operation);
+t_station *creer_stations_compatibles_exclusion(t_graphe *graphe, int *nb_stations);
+void afficher_stations_exclusion(t_station *stations, int nb_stations);
 
 #endif //OPTIMISATION_D_UNE_LIGNE_D_ASSEMBLAGE_FC_OPENTOWORK_HEADER_H
