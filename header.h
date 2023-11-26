@@ -49,7 +49,7 @@ typedef struct graphe {
 
 
 typedef struct station {
-    int *operations; // Tableau d'opérations (sommets)
+    int *operations; // Tableau d'opérations
     int taille;      // Nombre d'opérations dans la station
 } t_station;
 
