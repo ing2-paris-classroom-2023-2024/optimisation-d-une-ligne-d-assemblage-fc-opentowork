@@ -15,7 +15,7 @@
 typedef struct sommet {
 
     int numero;
-    int temps_execution;
+    float temps_execution;
 
 } t_sommet;
 
