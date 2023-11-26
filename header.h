@@ -48,6 +48,11 @@ typedef struct graphe {
 } t_graphe;
 
 
+typedef struct station {
+    int *operations; // Tableau d'opérations (sommets)
+    int taille;      // Nombre d'opérations dans la station
+} t_station;
+
 
 /// === PROTOTYPES ===
 
