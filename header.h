@@ -15,7 +15,7 @@
 typedef struct sommet {
 
     int numero;
-    int temps_execution;
+    float temps_execution;
 
 } t_sommet;
 
@@ -47,6 +47,11 @@ typedef struct graphe {
 
 } t_graphe;
 
+
+typedef struct station {
+    int *operations; // Tableau d'opérations (sommets)
+    int taille;      // Nombre d'opérations dans la station
+} t_station;
 
 
 
