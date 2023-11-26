@@ -47,10 +47,7 @@ typedef struct graphe {
 
 } t_graphe;
 
-typedef struct station {
-    int *operations; // Tableau d'opérations (sommets)
-    int taille;      // Nombre d'opérations dans la station
-} t_station;
+
 
 
 
@@ -58,6 +55,8 @@ typedef struct station {
 
 // Sous-programmes généraux
 t_graphe * lire_fichier(char * type_lecture);
+
+// Sous-programmes exclusions
 int est_dans_le_tableau_exclusion(int *tableau, int taille, int element);
 int * calculer_ordre_exclusion(t_graphe *graphe);
 void ajouter_operation_station_exclusion(t_station *station, int operation);
