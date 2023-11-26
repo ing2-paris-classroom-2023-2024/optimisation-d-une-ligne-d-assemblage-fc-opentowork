@@ -5,7 +5,7 @@ int main() {
     printf("Projet d'algo :: Branche main ! \n");
 
     /// Tests de guicha (vous pouvez décommenter si vous voulez tester)
-    t_graphe * liste_precedences;
+    /*t_graphe * liste_precedences;
 
     liste_precedences = lire_fichier("precedences/temps");
 
@@ -26,7 +26,7 @@ int main() {
     printf("\n\n");
 
     printf("=== TEMPS DE CYCLE === \n");
-    printf("Valeur: %d", liste_precedences->temps_cycle);
+    printf("Valeur: %d", liste_precedences->temps_cycle);*/
 
     printf("\n");
     system("pause");
