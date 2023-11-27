@@ -5,7 +5,7 @@ int main() {
     printf("Projet d'algo :: Branche guicha ! \n\n");
 
     /// Tests de guicha (vous pouvez décommenter si vous voulez tester)
-    t_graphe * liste_precedences;
+    /*t_graphe * liste_precedences;
 
     liste_precedences = lire_fichier("precedences/temps");
 
@@ -29,7 +29,7 @@ int main() {
 
         printf("\n");
 
-    }
+    }*/
 
 
 
