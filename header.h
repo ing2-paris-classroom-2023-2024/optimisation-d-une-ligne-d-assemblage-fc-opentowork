@@ -84,4 +84,12 @@ int recherche_sommet_suivant(t_graphe * graphe_etudie, t_pile * pile_sommets_ajo
 t_station * calcul_precedences(t_graphe * graphe_etudie);
 
 
+// Sous-programmes exclusions
+int est_dans_le_tableau_exclusion(int *tableau, int taille, int element);
+int * calculer_ordre_exclusion(t_graphe *graphe);
+void ajouter_operation_station_exclusion(t_station *station, int operation);
+int est_compatible_avec_station_exclusion(t_graphe *graphe, t_station *station, int operation);
+t_station *creer_stations_compatibles_exclusion(t_graphe *graphe, int *nb_stations);
+void afficher_stations_exclusion(t_station *stations, int nb_stations);
+
 #endif //OPTIMISATION_D_UNE_LIGNE_D_ASSEMBLAGE_FC_OPENTOWORK_HEADER_H
