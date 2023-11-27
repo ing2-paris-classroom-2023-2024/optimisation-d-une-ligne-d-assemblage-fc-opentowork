@@ -3,4 +3,4 @@ project(optimisation_d_une_ligne_d_assemblage_fc_opentowork C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(optimisation_d_une_ligne_d_assemblage_fc_opentowork main.c header.h General/lire_fichier.c)
+add_executable(optimisation_d_une_ligne_d_assemblage_fc_opentowork main.c header.h General/lire_fichier.c Precedences/tri_tab_aretes.c Precedences/calcul_precedences.c Precedences/recherche_temps_operation.c Precedences/recherche_sommets_initiaux.c Precedences/creer_station.c Precedences/ajouter_station.c General/creer_pile.c General/empiler.c General/depiler.c Precedences/recherche_sommet_suivant.c)

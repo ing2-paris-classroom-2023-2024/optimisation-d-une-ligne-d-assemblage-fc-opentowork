@@ -2,36 +2,40 @@
 
 int main() {
 
-    printf("Projet d'algo :: Branche main ! \n");
+    printf("Projet d'algo :: Branche guicha ! \n\n");
 
     /// Tests de guicha (vous pouvez décommenter si vous voulez tester)
-    /*t_graphe * liste_precedences;
+    t_graphe * liste_precedences;
 
     liste_precedences = lire_fichier("precedences/temps");
 
-    printf("=== PRECEDENCES === \n");
-    for (int i=0; i<liste_precedences->taille; i++) {
+    t_station * stations = calcul_precedences(liste_precedences);
 
-        printf("Paire %d: %d %d \n", i, liste_precedences->tab_aretes[i].sommet1, liste_precedences->tab_aretes[i].sommet2);
+    int alive = 1;
+    int i = 0;
+
+
+    while (stations != NULL) {
+
+        printf("=== STATION %d: Temps de cycle de %f s === \n", i, stations->temps_cycle);
+
+        for (int j=0; j<stations->taille; j++) {
+
+            printf("%d ", stations->operations[j]);
+        }
+
+        stations = stations->next;
+        i++;
+
+        printf("\n");
+
     }
 
-    printf("\n\n");
 
-    printf("=== OPERATIONS === \n");
-    for (int i=0; i<liste_precedences->ordre; i++) {
-
-        printf("Paire %d: %d %f \n", i, liste_precedences->tab_sommets[i].numero, liste_precedences->tab_sommets[i].temps_execution);
-    }
 
     printf("\n\n");
-
-    printf("=== TEMPS DE CYCLE === \n");
-    printf("Valeur: %d", liste_precedences->temps_cycle);*/
-
-    printf("\nVous devez voir ce message uniquement si vous etes sur la branche guy-charbel. Sinon, je n'existe pas ! :)");
-
-    printf("\n");
     system("pause");
 
     return 0;
+
 }
