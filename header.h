@@ -92,4 +92,8 @@ int est_compatible_avec_station_exclusion(t_graphe *graphe, t_station *station, 
 t_station *creer_stations_compatibles_exclusion(t_graphe *graphe, int *nb_stations);
 void afficher_stations_exclusion(t_station *stations, int nb_stations);
 
+
+// Sous-programmes multicontraintes
+int comparaison_sommets(int sommet1, int sommet2, t_graphe * liste_precedences);
+
 #endif //OPTIMISATION_D_UNE_LIGNE_D_ASSEMBLAGE_FC_OPENTOWORK_HEADER_H
