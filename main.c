@@ -2,10 +2,9 @@
 
 int main() {
 
-    printf("Projet d'algo :: Branche main ! \n");
+    printf("Projet d'algo :: Branche main ! \n\n");
 
     /// Tests de Yanis
-
     t_graphe * liste_exclusions;
 
     liste_exclusions = lire_fichier("exclusions");
@@ -23,32 +22,34 @@ int main() {
     }
 
 
+    printf("\n\n");
+
     /// Tests de guicha (vous pouvez décommenter si vous voulez tester)
-    /*t_graphe * liste_precedences;
+    t_graphe * liste_precedences;
 
     liste_precedences = lire_fichier("precedences/temps");
 
-    t_station * stations = calcul_precedences(liste_precedences);
+    t_station * stations_precedence = calcul_precedences(liste_precedences);
 
     int alive = 1;
     int i = 0;
 
 
-    while (stations != NULL) {
+    while (stations_precedence != NULL) {
 
-        printf("=== STATION %d: Temps de cycle de %f s === \n", i, stations->temps_cycle);
+        printf("=== STATION %d: Temps de cycle de %f s === \n", i, stations_precedence->temps_cycle);
 
-        for (int j=0; j<stations->taille; j++) {
+        for (int j=0; j<stations_precedence->taille; j++) {
 
-            printf("%d ", stations->operations[j]);
+            printf("%d ", stations_precedence->operations[j]);
         }
 
-        stations = stations->next;
+        stations_precedence = stations_precedence->next;
         i++;
 
         printf("\n");
 
-    }*/
+    }
 
     printf("\n\n");
     system("pause");
