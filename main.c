@@ -14,6 +14,8 @@ int main() {
         printf("Paire %d: %d %d \n", i, liste_exclusions->tab_aretes[i].sommet1, liste_exclusions->tab_aretes[i].sommet2);
     }*/
 
+    printf("Ceci est un nouveau test/n")
+
     printf("\n");
     system("pause");
 
