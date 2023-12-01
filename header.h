@@ -47,16 +47,6 @@ typedef struct graphe {
 
 } t_graphe;
 
-
-typedef struct station {
-
-    int * operations; // Tableau d'opérations (sommets)
-    int taille;      // Nombre d'opérations dans la station
-    float temps_cycle; // Temps de cycle de la station
-    struct station * next; // Pointeur vers la station suivante (utilisé dans le calcul de précédences)
-
-} t_station;
-
 // Structure de pile
 typedef struct pile {
 
@@ -66,6 +56,19 @@ typedef struct pile {
 } t_pile;
 
 
+
+typedef struct station {
+
+    int id; // Identifiant de la station
+    int * operations; // Tableau d'opérations (sommets)
+    int taille;      // Nombre d'opérations dans la station
+    float temps_cycle; // Temps de cycle de la station
+    struct station * next; // Pointeur vers la station suivante (utilisé dans le calcul de précédences)
+
+} t_station;
+
+
+
 /// === PROTOTYPES ===
 
 // Sous-programmes généraux
@@ -73,6 +76,7 @@ t_graphe * lire_fichier(char * type_lecture);
 t_pile * creer_pile(int taille);
 void empiler(t_pile * pile, int item);
 int depiler(t_pile * pile);
+int seek(t_pile * pile, int item);
 
 // Sous-programmes precedences
 float recherche_temps_operation(t_graphe * graphe_etudie, int numero_operation);
@@ -92,8 +96,12 @@ int est_compatible_avec_station_exclusion(t_graphe *graphe, t_station *station, 
 t_station *creer_stations_compatibles_exclusion(t_graphe *graphe, int *nb_stations);
 void afficher_stations_exclusion(t_station *stations, int nb_stations);
 
+// Sous-programmes exclusions/précédences
+t_station * calcul_precedences_exclusions(t_graphe * liste_precedences, t_graphe * liste_exclusions);
 
 // Sous-programmes multicontraintes
-int comparaison_sommets(int sommet1, int sommet2, t_graphe * liste_precedences);
+int est_compatible_avec_station_exclusion_precedence(t_graphe * graphe, t_station * station_actuelle, int operation);
+t_station * calcul_multicontraintes(t_graphe * liste_precedences, t_graphe * liste_exclusions);
+int confirmation_ajout(t_station * station_actuelle, t_graphe * liste_precedences, int sommet_actuel);
 
 #endif //OPTIMISATION_D_UNE_LIGNE_D_ASSEMBLAGE_FC_OPENTOWORK_HEADER_H

@@ -10,7 +10,7 @@ void afficher_stations_exclusion(t_station *stations, int nb_stations) {
     // Boucle sur chaque station
     for (int i = 0; i < nb_stations; i++) {
         // Affiche le numéro de la station actuelle
-        printf("Station %d: ", i + 1);
+        printf("=== STATION %d: === \n ", i);
         // Boucle sur chaque opération de la station actuelle
         for (int j = 0; j < stations[i].taille; j++) {
             // Affiche le numéro de l'opération

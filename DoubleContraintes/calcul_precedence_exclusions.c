@@ -1,6 +1,6 @@
 #include "../header.h"
 
-t_station * calcul_multicontraintes(t_graphe * liste_precedences, t_graphe * liste_exclusions) {
+t_station * calcul_precedences_exclusions(t_graphe * liste_precedences, t_graphe * liste_exclusions) {
 
     // Affichage du graphe trié
     /*for (int i=0; i<liste_precedences->taille; i++) {
@@ -38,7 +38,7 @@ t_station * calcul_multicontraintes(t_graphe * liste_precedences, t_graphe * lis
         if (top_sommets_initiaux < taille_tab_sommets_initiaux) { // On ajoute d'abord les sommets initiaux
 
             sommet_actuel = tab_sommets_initiaux[top_sommets_initiaux];
-
+            top_sommets_initiaux = top_sommets_initiaux + 1;
 
         } else { // On ajoute les prochains sommets en fonction des contraintes de précédence
 
@@ -53,8 +53,7 @@ t_station * calcul_multicontraintes(t_graphe * liste_precedences, t_graphe * lis
         while (station_actuelle != NULL && recherche_station) {
 
             // Modalité d'ajout du sommet
-            if (recherche_temps_operation(liste_precedences, sommet_actuel) + station_actuelle->temps_cycle <= liste_precedences->temps_cycle &&
-                    est_compatible_avec_station_exclusion_precedence(liste_exclusions, station_actuelle, sommet_actuel) && station_actuelle->id >= station_min) { // Le nouveau sommet peut etre ajouté a la station car son temps de graphe lui permet de s'intégrer
+            if (est_compatible_avec_station_exclusion_precedence(liste_exclusions, station_actuelle, sommet_actuel) && station_actuelle->id >= station_min) { // Le nouveau sommet peut etre ajouté a la station car son temps de graphe lui permet de s'intégrer
 
                 station_actuelle->taille = station_actuelle->taille + 1;
 
@@ -70,12 +69,6 @@ t_station * calcul_multicontraintes(t_graphe * liste_precedences, t_graphe * lis
                 station_actuelle->operations[station_actuelle->taille-1] = sommet_actuel;
 
                 empiler(pile_sommets_ajoutes, sommet_actuel);
-
-                if (top_sommets_initiaux < taille_tab_sommets_initiaux) {
-
-                    top_sommets_initiaux = top_sommets_initiaux + 1;
-                }
-
                 station_actuelle->temps_cycle = station_actuelle->temps_cycle + recherche_temps_operation(liste_precedences, sommet_actuel);
 
                 recherche_station = 0;

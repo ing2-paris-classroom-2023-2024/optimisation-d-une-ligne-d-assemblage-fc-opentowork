@@ -17,8 +17,14 @@ void ajouter_station(t_station ** head) {
         return;
     }
 
-    while (dernier->next != NULL)
+    while (dernier->next != NULL) {
+
+
         dernier = dernier->next;
+    }
+
+
+    nouveau->id = dernier->id+1;
 
     dernier->next = nouveau;
 

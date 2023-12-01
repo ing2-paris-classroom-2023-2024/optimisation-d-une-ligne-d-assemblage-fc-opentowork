@@ -40,7 +40,7 @@ t_station * calcul_precedences(t_graphe * graphe_etudie) {
         if (top_sommets_initiaux < taille_tab_sommets_initiaux) { // On ajoute d'abord les sommets initiaux
 
             sommet_actuel = tab_sommets_initiaux[top_sommets_initiaux];
-            top_sommets_initiaux = top_sommets_initiaux + 1;
+
 
         } else { // On ajoute les prochains sommets en fonction des contraintes de précédence
 
@@ -48,10 +48,16 @@ t_station * calcul_precedences(t_graphe * graphe_etudie) {
 
         }
 
-        if (recherche_temps_operation(graphe_etudie, sommet_actuel) + station_actuelle->temps_cycle < graphe_etudie->temps_cycle) { // Le nouveau sommet peut etre ajouté a la station car son temps de graphe lui permet de s'intégrer
+        if (recherche_temps_operation(graphe_etudie, sommet_actuel) + station_actuelle->temps_cycle <= graphe_etudie->temps_cycle) { // Le nouveau sommet peut etre ajouté a la station car son temps de graphe lui permet de s'intégrer
 
             empiler(pile_sommets_station, sommet_actuel);
             empiler(pile_sommets_ajoutes, sommet_actuel);
+
+            if (top_sommets_initiaux < taille_tab_sommets_initiaux) {
+
+                top_sommets_initiaux = top_sommets_initiaux + 1;
+            }
+
             station_actuelle->temps_cycle = station_actuelle->temps_cycle + recherche_temps_operation(graphe_etudie, sommet_actuel);
 
         } else { // La station est pleine : il faut en créer une nouvelle

@@ -62,9 +62,6 @@ int recherche_sommet_suivant(t_graphe * graphe_etudie, t_pile * pile_sommets_ajo
             }
         }
 
-
-
-
     }
 
 }

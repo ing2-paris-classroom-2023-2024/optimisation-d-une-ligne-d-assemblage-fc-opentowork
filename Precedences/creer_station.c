@@ -8,6 +8,8 @@ t_station * creer_station() {
 
     t_station * temp = malloc(sizeof (t_station));
 
+    temp->id = 0;
+
     temp->taille = 0;
 
     temp->operations = NULL;
