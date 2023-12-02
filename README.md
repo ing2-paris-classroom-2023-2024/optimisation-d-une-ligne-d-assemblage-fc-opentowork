@@ -12,9 +12,10 @@
 
 ## Fonctionnalités
 
-- 😶‍🌫️Contraintes d'exclusion
-- ⏩Contraintes de précédence
-- ⌛Contrainte de temps de cycle
+- 😶‍🌫️Traitement des contraintes d'exclusion (afin de vérifier que 2 opérations qui ne peuvent être effectuées dans la même station le soient)
+- ⏩Traitement des contraintes de précédence (afin de vérifier qu'une opération qui dépends d'une autre ne puisse pas se trouver dans une station avant)
+- ⌛Traitement de la contrainte de temps de cycle (afin de vérifier que les voitures ne restent bien qu'un certain temps donné à la station)
+- 🥗Implémentation de toutes les contraintes
 - ⚡Fluidité maximale grâce à la programmation légère pour l'ordinateur et peu consommatrice de mémoire
 
 
@@ -30,7 +31,6 @@
 
 - [Cours de Monsieur Segado et Madame Palasi]()
 - [Vidéo sur Pert Cours de Monsieur Segado et Madame Palasi](https://youtu.be/xAidvykSNXo?si=k3a7QQhWpI37sgDv)
-- D'autres sources que nous avons certainement omis ici
 
 ## Qu'avons nous appris de ce projet ?
 
