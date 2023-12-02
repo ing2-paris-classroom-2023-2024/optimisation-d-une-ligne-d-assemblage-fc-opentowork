@@ -6,7 +6,6 @@
 
 float recherche_temps_operation(t_graphe * graphe_etudie, int numero_operation) {
 
-
     float resultat;
 
     for (int i=0; i<graphe_etudie->ordre; i++) {

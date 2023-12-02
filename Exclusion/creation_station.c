@@ -37,7 +37,7 @@ t_station *creer_stations_compatibles_exclusion(t_graphe *graphe, int *nb_statio
 
         // Si l'opération n'a pas été ajoutée à une station existante, créer une nouvelle station.
         if (!ajoute) {
-            t_station nouvelle_station = {NULL, 0}; // Créer une nouvelle station vide.
+            t_station nouvelle_station = {0,NULL, 0}; // Créer une nouvelle station vide.
             // Ajouter l'opération à la nouvelle station.
             ajouter_operation_station_exclusion(&nouvelle_station, tab_op[op]);
             // Ajouter la nouvelle station au tableau de stations.

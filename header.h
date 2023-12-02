@@ -77,10 +77,11 @@ t_pile * creer_pile(int taille);
 void empiler(t_pile * pile, int item);
 int depiler(t_pile * pile);
 int seek(t_pile * pile, int item);
+void tri_tab_aretes(t_graphe * graphe_etudie);
+void tri_tab_sommets(t_graphe * graphe_etudie);
 
 // Sous-programmes precedences
 float recherche_temps_operation(t_graphe * graphe_etudie, int numero_operation);
-void tri_tab_aretes(t_graphe * graphe_etudie);
 int * recherche_sommets_initiaux(t_graphe * graphe_etudie, int * taille_tab_sommets_initiaux);
 t_station * creer_station();
 void ajouter_station(t_station ** head);
@@ -98,10 +99,11 @@ void afficher_stations_exclusion(t_station *stations, int nb_stations);
 
 // Sous-programmes exclusions/précédences
 t_station * calcul_precedences_exclusions(t_graphe * liste_precedences, t_graphe * liste_exclusions);
-t_station *calcul_exclusion_temps(t_graphe *graphe, int *nb_stations, float temps_cycle);
-// Sous-programmes exclusions/temps
 
-void afficher_stations_exclusion_temps(t_station *stations, int nb_stations);
+// Sous-programmes exclusions/temps
+t_station * calcul_exclusion_temps(t_graphe * liste_exclusions);
+
+
 // Sous-programmes multicontraintes
 int est_compatible_avec_station_exclusion_precedence(t_graphe * graphe, t_station * station_actuelle, int operation);
 t_station * calcul_multicontraintes(t_graphe * liste_precedences, t_graphe * liste_exclusions);

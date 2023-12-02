@@ -8,41 +8,50 @@ void changeTextColor(int color) {
 int main() {
     int choix;
     int nb_stations_exclusion;
+
     t_graphe * liste_exclusions;
     liste_exclusions = lire_fichier("exclusions");
+
     t_graphe * liste_precedences;
     liste_precedences = lire_fichier("precedences/temps");
+
     t_station * stations = creer_stations_compatibles_exclusion(liste_exclusions, &nb_stations_exclusion);
 
     t_station * stations_precedence = calcul_precedences(liste_precedences);
-
-    t_station * stations_precedences_exclusions = calcul_precedences_exclusions(liste_precedences, liste_exclusions);
     int i = 0;
 
-    t_station * station_e_t = calcul_exclusion_temps(liste_exclusions, &nb_stations_exclusion, liste_precedences->temps_cycle);
+    t_station * stations_precedences_exclusions = calcul_precedences_exclusions(liste_precedences, liste_exclusions);
 
+    liste_exclusions->ordre = liste_precedences->ordre;
+    liste_exclusions->tab_sommets = liste_precedences->tab_sommets;
+    t_station * stations_exclusions_temps = calcul_exclusion_temps(liste_exclusions);
 
     t_station * stations_multicontraintes = calcul_multicontraintes(liste_precedences, liste_exclusions);
 
 
     while(1) {
+
+        system("cls");
+
         printf("\033[0;32m");
-        printf("Bienvenue sur l optimisation d une ligne d assemblage !\n");
+        printf("/=*=*= PROGRAMME D'OPTIMISATION D'UNE LIGNE D'ASSEMBLAGE =*=*=\\ \n");
         printf("\033[0m");
 
         printf("Veuillez choisir une option:\n");
         changeTextColor(34);
-        printf("1. Contrainte d exclusion \n");
+        printf("1. Contrainte d'exclusion \n");
         printf("2. Contrainte de precedence et de temps de cycle\n");
-        printf("3. Contrainte de precedence et d exclusion\n");
-        printf("4. Contrainte d exclusion et de temps de cycle\n");
-        printf("5. Multicontraintes ( les 3 a la fois )\n");
+        printf("3. Contrainte de precedence et d'exclusion\n");
+        printf("4. Contrainte d'exclusion et de temps de cycle\n");
+        printf("5. Multicontraintes (les 3 a la fois)\n");
         printf("6. Afficher toutes les contraintes en meme temps\n");
         printf("7. Quitter\n");
         printf("\033[0m");
 
         printf("Entrez votre choix: ");
         scanf("%d", &choix);
+
+        printf("\n");
 
         // Traitement du choix
         switch(choix) {
@@ -84,7 +93,7 @@ int main() {
 
 
 
-                printf("*** CONTRAINTE DE PRECEDENCE ET EXCLUSIONS *** \n");
+                printf("*** CONTRAINTES DE PRECEDENCE ET EXCLUSIONS *** \n");
                 while (stations_precedences_exclusions != NULL) {
 
                     printf("=== STATION %d: === \n", stations_precedences_exclusions->id);
@@ -106,8 +115,21 @@ int main() {
 
                 break;
             case 4:
-                printf("*** EXCLUSION ET TEMPS  *** \n");
-                afficher_stations_exclusion_temps(station_e_t,nb_stations_exclusion);
+                printf("*** CONTRAINTES D'EXCLUSION ET TEMPS  *** \n");
+                while (stations_exclusions_temps != NULL) {
+
+                    printf("=== STATION %d: Temps de cycle de %f s === \n", stations_exclusions_temps->id, stations_exclusions_temps->temps_cycle);
+
+                    for (int j=0; j<stations_exclusions_temps->taille; j++) {
+
+                        printf("%d ", stations_exclusions_temps->operations[j]);
+                    }
+
+                    stations_exclusions_temps = stations_exclusions_temps->next;
+
+
+                    printf("\n");
+                }
 
 
                 break;
@@ -161,7 +183,7 @@ int main() {
                 printf("\n\n");
 
 
-                printf("*** CONTRAINTE DE PRECEDENCE ET EXCLUSIONS *** \n");
+                printf("*** CONTRAINTES DE PRECEDENCE ET EXCLUSIONS *** \n");
                 while (stations_precedences_exclusions != NULL) {
 
                     printf("=== STATION %d: === \n", stations_precedences_exclusions->id);
@@ -180,8 +202,21 @@ int main() {
 
 
                 printf("\n\n");
-                printf("*** EXCLUSION ET TEMPS  *** \n");
-                afficher_stations_exclusion_temps(station_e_t,nb_stations_exclusion);
+                printf("*** CONTRAINTES D'EXCLUSION ET TEMPS  *** \n");
+                while (stations_exclusions_temps != NULL) {
+
+                    printf("=== STATION %d: Temps de cycle de %f s === \n", stations_exclusions_temps->id, stations_exclusions_temps->temps_cycle);
+
+                    for (int j=0; j<stations_exclusions_temps->taille; j++) {
+
+                        printf("%d ", stations_exclusions_temps->operations[j]);
+                    }
+
+                    stations_exclusions_temps = stations_exclusions_temps->next;
+
+
+                    printf("\n");
+                }
 
                 printf("\n\n");
 
@@ -216,7 +251,7 @@ int main() {
                 printf("Choix invalide\n");
         }
 
-        printf("Appuyez sur une touche pour revenir au menu...\n");
+        printf("\n\nAppuyez sur Entree pour revenir au menu...\n");
         getchar(); getchar();
     }
 
