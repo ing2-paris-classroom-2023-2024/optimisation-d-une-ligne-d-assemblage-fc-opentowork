@@ -153,6 +153,7 @@ int main() {
 
                     printf("\n");
 
+
                 }
 
 
@@ -200,12 +201,17 @@ int main() {
 
                     printf("\n");
 
+
                 }
+                break;
+
+
 
 
 
             case 7:
                 return 0;
+
             default:
                 printf("Choix invalide\n");
         }
@@ -214,5 +220,8 @@ int main() {
         getchar(); getchar();
     }
 
-    return 0;
 }
+
+
+
+
