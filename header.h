@@ -98,7 +98,10 @@ void afficher_stations_exclusion(t_station *stations, int nb_stations);
 
 // Sous-programmes exclusions/précédences
 t_station * calcul_precedences_exclusions(t_graphe * liste_precedences, t_graphe * liste_exclusions);
+t_station *calcul_exclusion_temps(t_graphe *graphe, int *nb_stations, float temps_cycle);
+// Sous-programmes exclusions/temps
 
+void afficher_stations_exclusion_temps(t_station *stations, int nb_stations);
 // Sous-programmes multicontraintes
 int est_compatible_avec_station_exclusion_precedence(t_graphe * graphe, t_station * station_actuelle, int operation);
 t_station * calcul_multicontraintes(t_graphe * liste_precedences, t_graphe * liste_exclusions);
