@@ -12,10 +12,11 @@
 
 ## Fonctionnalités
 
-- 😶‍🌫️Traitement des contraintes d'exclusion (afin de vérifier que 2 opérations qui ne peuvent être effectuées dans la même station le soient)
-- ⏩Traitement des contraintes de précédence (afin de vérifier qu'une opération qui dépends d'une autre ne puisse pas se trouver dans une station avant)
-- ⌛Traitement de la contrainte de temps de cycle (afin de vérifier que les voitures ne restent bien qu'un certain temps donné à la station)
-- 🥗Implémentation de toutes les contraintes
+- 😶‍🌫️Traitement des contraintes d'exclusion (afin de séparer les opérations qui ne peuvent partager la même station)
+- ⏩Traitement des contraintes de précédences (afin de placer les opérations dans les stations en adéquation avec leurs précédences)
+- ⌛Traitement de la contrainte de temps de cycle (afin de limiter le nombre d'opérations par station en fonction du temps de cycle fourni)
+- 🥗Traitement de toutes les contraintes combinées
+- 📊Interface de comparaison des solutions permettant de sélectionner facilement la plus optimale
 - ⚡Fluidité maximale grâce à la programmation légère pour l'ordinateur et peu consommatrice de mémoire
 
 
@@ -34,7 +35,7 @@
 
 ## Qu'avons nous appris de ce projet ?
 
-Ce projet a été pour nous un défi de developpement, mais également un défi d'organisation et de planification. En effet, outre les difficultés rencontrées lors du développement des algortihmes de contraintes afin de répondre au cahier des charges, le plus gros enjeu de ce projet était de correctemment implémenter toutes ces contraintes entre elles sans que ça n'empiète sur le fonctionnement de chacun. C'était également assez plaisant de travailler pour la première fois sur un exemple de projet de la vie courante.
+Ce projet a été pour nous un défi de developpement, mais également un défi d'organisation et de planification. En effet, outre les difficultés rencontrées lors du développement des algortihmes de contraintes afin de répondre au cahier des charges, le plus gros enjeu de ce projet était de correctemment rassembler ces contraintes afin de fournir un résultat optimal dans tous les cas possibles. Ce projet nous a également permis d'entrevoir un projet profondément ancré dans le réel du monde du travail et de l'industrie.
 
 
 ## Support
