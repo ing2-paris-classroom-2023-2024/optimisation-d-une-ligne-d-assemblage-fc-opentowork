@@ -5,9 +5,12 @@ void changeTextColor(int color) {
     printf("\033[0;%dm", color);
 }
 
+
+
+
 int main() {
     int choix;
-    int nb_stations_exclusion;
+    int nb_stations_exclusion,nb_stations_exclusion_t;
     int i = 0;
 
     t_graphe * liste_exclusions;
@@ -57,14 +60,30 @@ int main() {
             case 1:
 
                 stations = creer_stations_compatibles_exclusion(liste_exclusions, &nb_stations_exclusion);
-
+                afficher_stations_exclusion(stations,nb_stations_exclusion);
+                /*
                 printf("*** CONTRAINTES EXCLUSIONS SEULES *** \n");
-                afficher_stations_exclusion(stations, nb_stations_exclusion);
+                while (stations != NULL) {
+
+                    printf("=== STATION %d: === \n", stations->id);
+
+                    for (int j=0; j<stations->taille; j++) {
+
+                        printf("%d ", stations->operations[j]);
+                    }
+
+                    stations = stations->next;
+
+
+                    printf("\n");
+
+                }
                 printf("\n");
 
 
 
                 printf("\n\n");
+                 */
 
                 break;
             case 2:
@@ -119,23 +138,10 @@ int main() {
                 break;
             case 4:
 
-                stations_exclusions_temps = calcul_exclusion_temps(liste_exclusions);
+                stations_exclusions_temps = calcul_exclusion_temps(liste_exclusions,&nb_stations_exclusion_t,liste_precedences->temps_cycle);
 
                 printf("*** CONTRAINTES D'EXCLUSION ET TEMPS  *** \n");
-                while (stations_exclusions_temps != NULL) {
-
-                    printf("=== STATION %d: Temps de cycle de %f s === \n", stations_exclusions_temps->id, stations_exclusions_temps->temps_cycle);
-
-                    for (int j=0; j<stations_exclusions_temps->taille; j++) {
-
-                        printf("%d ", stations_exclusions_temps->operations[j]);
-                    }
-
-                    stations_exclusions_temps = stations_exclusions_temps->next;
-
-
-                    printf("\n");
-                }
+                afficher_stations_exclusion_temps(stations_exclusions_temps,nb_stations_exclusion_t);
 
 
                 break;
@@ -164,10 +170,10 @@ int main() {
 
             case 6:
 
-                stations = creer_stations_compatibles_exclusion(liste_exclusions, &nb_stations_exclusion);
+                stations = creer_stations_compatibles_exclusion(liste_exclusions,&nb_stations_exclusion);
                 stations_precedence = calcul_precedences(liste_precedences);
                 stations_precedences_exclusions = calcul_precedences_exclusions(liste_precedences, liste_exclusions);
-                stations_exclusions_temps = calcul_exclusion_temps(liste_exclusions);
+                stations_exclusions_temps = calcul_exclusion_temps(liste_exclusions,&nb_stations_exclusion_t,liste_precedences->temps_cycle);
                 stations_multicontraintes = calcul_multicontraintes(liste_precedences, liste_exclusions);
 
 
@@ -218,20 +224,7 @@ int main() {
 
                 printf("\n\n");
                 printf("*** CONTRAINTES D'EXCLUSION ET TEMPS  *** \n");
-                while (stations_exclusions_temps != NULL) {
-
-                    printf("=== STATION %d: Temps de cycle de %f s === \n", stations_exclusions_temps->id, stations_exclusions_temps->temps_cycle);
-
-                    for (int j=0; j<stations_exclusions_temps->taille; j++) {
-
-                        printf("%d ", stations_exclusions_temps->operations[j]);
-                    }
-
-                    stations_exclusions_temps = stations_exclusions_temps->next;
-
-
-                    printf("\n");
-                }
+                afficher_stations_exclusion_temps(stations_exclusions_temps, nb_stations_exclusion_t);
 
                 printf("\n\n");
 

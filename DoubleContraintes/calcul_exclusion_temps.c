@@ -1,112 +1,69 @@
 #include "../header.h"
 
-t_station * calcul_exclusion_temps(t_graphe * liste_exclusions) {
+t_station * calcul_exclusion_temps(t_graphe * graphe, int *nb_stations, float tempscycle){
+    // Calculer et récupérer un tableau des opérations uniques présentes dans le graphe.
 
-    //printf("Ordre: %d \n", liste_exclusions->ordre);
-    tri_tab_sommets(liste_exclusions);
+    *nb_stations = 0; // Initialiser le nombre de stations à 0.
 
-    // Affichage du graphe trié
-    /*for (int i=0; i<liste_precedences->taille; i++) {
+    // Allouer de la mémoire pour un tableau de stations basé sur le nombre d'opérations uniques.
+    t_station *stations = malloc(graphe->ordre * sizeof(t_station));
+    int * tabop= trier_operations_par_exclusion(graphe) ;
 
-        printf("Paire %d: %d %d \n", i, liste_precedences->tab_aretes[i].sommet1, liste_precedences->tab_aretes[i].sommet2);
-    }*/
+    // Initialisation de chaque station dans le tableau
+    for (int i = 0; i < graphe->ordre; i++) {
+        stations[i].operations = NULL; // Initialiser le tableau des opérations à NULL.
+        stations[i].taille = 0; // Initialiser la taille de chaque station à 0.
+        stations[i].temps_cycle=0;
+    }
 
-    // Algorithme de remplissage des stations
-    t_pile * pile_sommets_ajoutes = creer_pile(liste_exclusions->ordre);
+    // Sur chaque opération unique dans le tableau 'tab_op'
+    for (int op = 0; op <= graphe->ordre-1; op++) {
+        int ajoute = 0; // Un indicateur pour savoir si l'opération a été ajoutée à une station existante.
 
-    t_station * head = NULL;
-    t_station * station_actuelle = NULL;
-
-    ajouter_station(&head);
-
-    station_actuelle = head;
-
-    // Initialisation des variables de parcours
-    int sommet_actuel;
-    int index_sommet_actuel = 0;
-    int recherche_station;
-
-
-
-    while (pile_sommets_ajoutes->top < liste_exclusions->ordre-1) {
-
-        recherche_station = 1;
-
-        // On ajoute les prochains sommets en fonction des contraintes de précédence
-        sommet_actuel = liste_exclusions->tab_sommets[index_sommet_actuel].numero;
-
-
-        // On boucle parmi les stations disponibles
-        while (station_actuelle != NULL && recherche_station) {
-
-            // Modalité d'ajout du sommet
-            if (recherche_temps_operation(liste_exclusions, sommet_actuel) + station_actuelle->temps_cycle <= liste_exclusions->temps_cycle &&
-                est_compatible_avec_station_exclusion(liste_exclusions, station_actuelle, sommet_actuel)) { // Le nouveau sommet peut etre ajouté a la station car son temps de graphe lui permet de s'intégrer
-
-                station_actuelle->taille = station_actuelle->taille + 1;
-
-                if (station_actuelle->operations == NULL) {
-
-                    station_actuelle->operations = malloc(1 * sizeof (int));
-
-                } else {
-
-                    station_actuelle->operations = realloc(station_actuelle->operations, station_actuelle->taille * sizeof(int));
-                }
-
-                station_actuelle->operations[station_actuelle->taille-1] = sommet_actuel;
-
-                index_sommet_actuel = index_sommet_actuel + 1;
-
-                empiler(pile_sommets_ajoutes, sommet_actuel);
-
-                station_actuelle->temps_cycle = station_actuelle->temps_cycle + recherche_temps_operation(liste_exclusions, sommet_actuel);
-
-                recherche_station = 0;
-
-            } else { // La station est incompatible :: on passe à la suivante
-
-                station_actuelle = station_actuelle->next;
-
+        // Essayer d'ajouter l'opération à une station existante
+        for (int j = 0; j < *nb_stations; j++) {
+            // Vérifier si l'opération est compatible avec la station actuelle.
+            if ((est_compatible_avec_station_exclusion(graphe, &stations[j], tabop[op]))&&(stations[j].temps_cycle+
+                    recherche_temps_operation(graphe,tabop[op]<=tempscycle))) {
+                // Si compatible, ajouter l'opération à la station et marquer comme ajoutée.
+                stations[j].temps_cycle+= recherche_temps_operation(graphe,tabop[op]);
+                ajouter_operation_station_exclusion(&stations[j],tabop[op] );
+                ajoute = 1; // Marquer comme ajoutée.
+                break; // Sortir de la boucle car l'opération a été ajoutée.
             }
-
         }
 
-        if (station_actuelle == NULL && recherche_station) {
+        // Si l'opération n'a pas été ajoutée à une station existante, créer une nouvelle station.
+        if (!ajoute) {
+            t_station nouvelle_station = {0,NULL, 0}; // Créer une nouvelle station vide.
 
-            ajouter_station(&head);
+            // Ajouter l'opération à la nouvelle station.
+            ajouter_operation_station_exclusion(&nouvelle_station, tabop[op]);
+            nouvelle_station.temps_cycle= recherche_temps_operation(graphe, tabop[op]);
 
-            recherche_station = 0;
+            // Ajouter la nouvelle station au tableau de stations.
+            stations[*nb_stations] = nouvelle_station;
+            (*nb_stations)++; // Incrémenter le nombre de stations.
         }
-
-        station_actuelle = head;
-
-        /*int k=0;
-
-        t_station * station_temp = station_actuelle;
-
-        /// AFFICHAGE DE LA PILE STATION
-        while (station_temp != NULL) {
-
-            printf("=== STATION %d: Temps de cycle de %f s === \n", k, station_temp->temps_cycle);
-
-            for (int j=0; j<station_temp->taille; j++) {
-
-                printf("%d ", station_temp->operations[j]);
-            }
-
-            station_temp = station_temp->next;
-            k++;
-
-            printf("\n");
-
-        }
-
-        printf("\n\n***************************************\n\n");*/
 
 
     }
 
-    return head;
+    // Retourner le tableau de stations créé.
+    return stations;
+}
 
+void afficher_stations_exclusion_temps(t_station *stations, int nb_stations) {
+    // Boucle sur chaque station
+    for (int i = 0; i < nb_stations; i++) {
+        // Affiche le numéro de la station actuelle
+        printf("=== STATION %d: === Temps de cycle : %f \n ", i, stations[i].temps_cycle);
+        // Boucle sur chaque opération de la station actuelle
+        for (int j = 0; j < stations[i].taille; j++) {
+            // Affiche le numéro de l'opération
+            printf("%d ", stations[i].operations[j]);
+        }
+        // Passe à la ligne suivante après avoir affiché toutes les opérations de la station
+        printf("\n");
+    }
 }

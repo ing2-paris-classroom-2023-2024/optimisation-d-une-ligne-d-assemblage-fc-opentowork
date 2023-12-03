@@ -66,6 +66,11 @@ typedef struct station {
 
 } t_station;
 
+typedef struct {
+    int operation;
+    int occurences;
+} t_operation_occurence;
+
 
 
 /// === PROTOTYPES ===
@@ -95,12 +100,14 @@ void ajouter_operation_station_exclusion(t_station *station, int operation);
 int est_compatible_avec_station_exclusion(t_graphe *graphe, t_station *station, int operation);
 t_station *creer_stations_compatibles_exclusion(t_graphe *graphe, int *nb_stations);
 void afficher_stations_exclusion(t_station *stations, int nb_stations);
+int *trier_operations_par_exclusion(t_graphe *graphe);
 
 // Sous-programmes exclusions/précédences
 t_station * calcul_precedences_exclusions(t_graphe * liste_precedences, t_graphe * liste_exclusions);
 
 // Sous-programmes exclusions/temps
-t_station * calcul_exclusion_temps(t_graphe * liste_exclusions);
+t_station * calcul_exclusion_temps(t_graphe * graphe, int *nb_stations, float tempscycle);
+void afficher_stations_exclusion_temps(t_station *stations, int nb_stations);
 
 
 // Sous-programmes multicontraintes
