@@ -194,7 +194,7 @@ int main() {
                     stations_precedence = stations_precedence->next;
                     i++;
 
-                    printf("\n");
+                    printf("\n\n");
 
 
                 }
