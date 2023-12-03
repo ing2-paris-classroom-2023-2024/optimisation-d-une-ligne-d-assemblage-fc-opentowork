@@ -32,7 +32,6 @@ typedef struct arete {
 
     int sommet1;
     int sommet2;
-    int poids;
 
 } t_arete;
 

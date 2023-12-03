@@ -16,12 +16,13 @@ int main() {
     t_graphe * liste_precedences;
     liste_precedences = lire_fichier("precedences/temps");
 
+    liste_exclusions->ordre = liste_precedences->ordre;
+    liste_exclusions->tab_sommets = liste_precedences->tab_sommets;
+
     t_station * stations = NULL;
     t_station * stations_precedence = NULL;
     t_station * stations_precedences_exclusions = NULL;
 
-    liste_exclusions->ordre = liste_precedences->ordre;
-    liste_exclusions->tab_sommets = liste_precedences->tab_sommets;
     t_station * stations_exclusions_temps = NULL;
 
     t_station * stations_multicontraintes = NULL;
