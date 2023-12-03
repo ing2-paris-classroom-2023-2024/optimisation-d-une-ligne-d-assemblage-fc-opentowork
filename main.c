@@ -60,37 +60,22 @@ int main() {
             case 1:
 
                 stations = creer_stations_compatibles_exclusion(liste_exclusions, &nb_stations_exclusion);
+
+                changeTextColor(31);
+                printf("*** CONTRAINTES D'EXCLUSION SEULES *** \n");
+                changeTextColor(0);
+
                 afficher_stations_exclusion(stations,nb_stations_exclusion);
-                /*
-                printf("*** CONTRAINTES EXCLUSIONS SEULES *** \n");
-                while (stations != NULL) {
 
-                    printf("=== STATION %d: === \n", stations->id);
-
-                    for (int j=0; j<stations->taille; j++) {
-
-                        printf("%d ", stations->operations[j]);
-                    }
-
-                    stations = stations->next;
-
-
-                    printf("\n");
-
-                }
-                printf("\n");
-
-
-
-                printf("\n\n");
-                 */
 
                 break;
             case 2:
 
                 stations_precedence = calcul_precedences(liste_precedences);
 
+                changeTextColor(31);
                 printf("*** CONTRAINTES PRECEDENCE/TEMPS DE CYCLE *** \n");
+                changeTextColor(0);
                 while (stations_precedence != NULL) {
 
                     printf("=== STATION %d: Temps de cycle de %f s === \n", i, stations_precedence->temps_cycle);
@@ -115,7 +100,10 @@ int main() {
 
                 stations_precedences_exclusions = calcul_precedences_exclusions(liste_precedences, liste_exclusions);
 
+                changeTextColor(31);
                 printf("*** CONTRAINTES DE PRECEDENCE ET EXCLUSIONS *** \n");
+                changeTextColor(0);
+
                 while (stations_precedences_exclusions != NULL) {
 
                     printf("=== STATION %d: === \n", stations_precedences_exclusions->id);
@@ -140,7 +128,10 @@ int main() {
 
                 stations_exclusions_temps = calcul_exclusion_temps(liste_exclusions,&nb_stations_exclusion_t,liste_precedences->temps_cycle);
 
+                changeTextColor(31);
                 printf("*** CONTRAINTES D'EXCLUSION ET TEMPS  *** \n");
+                changeTextColor(0);
+
                 afficher_stations_exclusion_temps(stations_exclusions_temps,nb_stations_exclusion_t);
 
 
@@ -149,7 +140,10 @@ int main() {
 
                 stations_multicontraintes = calcul_multicontraintes(liste_precedences, liste_exclusions);
 
+                changeTextColor(31);
                 printf("*** MULTICONTRAINTES (LES 3) *** \n");
+                changeTextColor(0);
+
                 while (stations_multicontraintes != NULL) {
 
                     printf("=== STATION %d: Temps de cycle de %f s === \n", stations_multicontraintes->id, stations_multicontraintes->temps_cycle);
@@ -176,12 +170,17 @@ int main() {
                 stations_exclusions_temps = calcul_exclusion_temps(liste_exclusions,&nb_stations_exclusion_t,liste_precedences->temps_cycle);
                 stations_multicontraintes = calcul_multicontraintes(liste_precedences, liste_exclusions);
 
-
+                changeTextColor(31);
                 printf("*** CONTRAINTES EXCLUSIONS SEULES *** \n");
+                changeTextColor(0);
+
                 afficher_stations_exclusion(stations, nb_stations_exclusion);
                 printf("\n\n");
 
+                changeTextColor(31);
                 printf("*** CONTRAINTES PRECEDENCE/TEMPS DE CYCLE *** \n");
+                changeTextColor(0);
+
                 while (stations_precedence != NULL) {
 
                     printf("=== STATION %d: Temps de cycle de %f s === \n", i, stations_precedence->temps_cycle);
@@ -194,7 +193,7 @@ int main() {
                     stations_precedence = stations_precedence->next;
                     i++;
 
-                    printf("\n\n");
+                    printf("\n");
 
 
                 }
@@ -203,8 +202,10 @@ int main() {
 
                 printf("\n\n");
 
-
+                changeTextColor(31);
                 printf("*** CONTRAINTES DE PRECEDENCE ET EXCLUSIONS *** \n");
+                changeTextColor(0);
+
                 while (stations_precedences_exclusions != NULL) {
 
                     printf("=== STATION %d: === \n", stations_precedences_exclusions->id);
@@ -223,12 +224,17 @@ int main() {
 
 
                 printf("\n\n");
+                changeTextColor(31);
                 printf("*** CONTRAINTES D'EXCLUSION ET TEMPS  *** \n");
+                changeTextColor(0);
+
                 afficher_stations_exclusion_temps(stations_exclusions_temps, nb_stations_exclusion_t);
 
                 printf("\n\n");
 
+                changeTextColor(31);
                 printf("*** MULTICONTRAINTES (LES 3) *** \n");
+                changeTextColor(0);
 
                 while (stations_multicontraintes != NULL) {
 
